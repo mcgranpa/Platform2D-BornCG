@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 100, 50 )
+
+[node name="FallZone" type="Area2D"]
+position = Vector2( 3272, -224 )
+scale = Vector2( 35.4258, 1.84406 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 16 )
+shape = SubResource( 2 )

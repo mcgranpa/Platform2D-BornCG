@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Levels/FallZone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Javan.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/WorldTileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/OneWayTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Extras/Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/FallZone.gd" type="Script" id=6]
+[ext_resource path="res://Assets/HUD/coin_gold.png" type="Texture" id=7]
+[ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.215686 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 8 )
+
+[node name="Level1" type="Node2D"]
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_vertical_guides_": [ -31504.0 ]
+}
+
+[node name="WorldTileMap" parent="." instance=ExtResource( 3 )]
+
+[node name="OneWayTileMap" parent="." instance=ExtResource( 4 )]
+
+[node name="Javan" parent="." instance=ExtResource( 2 )]
+position = Vector2( 832, -1288 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 3264, -256 )
+scale = Vector2( 35.4258, 1.84406 )
+
+[node name="Coin01" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( -64.5857, -182.207 )
+scale = Vector2( 0.028228, 0.542282 )
+
+[node name="Coin02" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( -59.6176, -177.868 )
+scale = Vector2( 0.028228, 0.542282 )
+
+[node name="Coin03" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( -51.9396, -173.53 )
+scale = Vector2( 0.028228, 0.542282 )
+
+[node name="FallZone" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3264, -256 )
+collision_layer = 4
+script = ExtResource( 6 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="HUD"]
+margin_left = 16.0362
+margin_top = 15.1453
+margin_right = 110.036
+margin_bottom = 68.1453
+rect_scale = Vector2( 2.80145, 1.58311 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinPicture" type="TextureRect" parent="HUD"]
+margin_left = 23.9836
+margin_top = 33.8541
+margin_right = 84.9836
+margin_bottom = 94.8541
+rect_scale = Vector2( 0.682836, 0.644017 )
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Label" parent="HUD"]
+margin_left = 74.5981
+margin_top = 33.0551
+margin_right = 114.598
+margin_bottom = 192.055
+rect_scale = Vector2( 1.32317, 0.436729 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "x
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="HUD"]
+margin_left = 134.973
+margin_top = 33.3009
+margin_right = 197.973
+margin_bottom = 129.301
+rect_scale = Vector2( 2.22957, 1.13314 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "999
+"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="FallZone" to="Javan" method="_on_FallZone_body_entered"]
