@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/FallZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Javan.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/HUD/coin_gold.png" type="Texture" id=7]
 [ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=9]
+[ext_resource path="res://Characters/enemy.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.215686 )
@@ -36,21 +37,21 @@ __meta__ = {
 [node name="OneWayTileMap" parent="." instance=ExtResource( 4 )]
 
 [node name="Javan" parent="." instance=ExtResource( 2 )]
-position = Vector2( 832, -1288 )
+position = Vector2( 844.772, -1217.43 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Coins" type="Node2D" parent="."]
 position = Vector2( 3264, -256 )
 scale = Vector2( 35.4258, 1.84406 )
 
-[node name="Coin01" parent="Node2D" instance=ExtResource( 5 )]
+[node name="Coin01" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( -64.5857, -182.207 )
 scale = Vector2( 0.028228, 0.542282 )
 
-[node name="Coin02" parent="Node2D" instance=ExtResource( 5 )]
+[node name="Coin02" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( -59.6176, -177.868 )
 scale = Vector2( 0.028228, 0.542282 )
 
-[node name="Coin03" parent="Node2D" instance=ExtResource( 5 )]
+[node name="Coin03" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( -51.9396, -173.53 )
 scale = Vector2( 0.028228, 0.542282 )
 
@@ -118,4 +119,13 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="enemy01" parent="enemies" instance=ExtResource( 10 )]
+position = Vector2( 1189.95, -867.833 )
+
+[node name="enemy02" parent="enemies" instance=ExtResource( 10 )]
+position = Vector2( 1291.04, -866.718 )
+direction = 1
 [connection signal="body_entered" from="FallZone" to="Javan" method="_on_FallZone_body_entered"]

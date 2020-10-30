@@ -27,7 +27,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 48, 64, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 32, 16, 64, 0, 64 )
+points = PoolVector2Array( 62.2222, 64, 0, 64, 0, 0, 62.2222, 0 )
 
 [resource]
 0/name = "tileYellow_04.png 0"
