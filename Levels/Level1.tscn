@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/FallZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Javan.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Levels/FallZone.gd" type="Script" id=6]
 [ext_resource path="res://Assets/HUD/coin_gold.png" type="Texture" id=7]
 [ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.215686 )
@@ -58,7 +59,10 @@ position = Vector2( 3264, -256 )
 collision_layer = 4
 script = ExtResource( 6 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." groups=[
+"HUD",
+]]
+script = ExtResource( 9 )
 
 [node name="Panel" type="Panel" parent="HUD"]
 margin_left = 16.0362

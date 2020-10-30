@@ -7,7 +7,9 @@
 radius = 29.1045
 height = 14.8111
 
-[node name="Javan" type="KinematicBody2D"]
+[node name="Javan" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_mask = 2147483678
 script = ExtResource( 2 )
 __meta__ = {

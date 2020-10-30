@@ -9,6 +9,8 @@ const GRAVITY = 35
 const JUMPFORCE = -1100
 const MAXJUMPS = 2
 
+onready var huds = get_tree().get_nodes_in_group("HUD")
+
 func _physics_process(delta):
 	if Input.is_action_pressed("right"):
 		velocity.x = SPEED
@@ -47,14 +49,15 @@ func _physics_process(delta):
 	## lerp allows character to slow down when movement stops
 	velocity.x = lerp(velocity.x,0,0.5)
 	
-	if (coins == 3):
-		get_tree().change_scene("res://Levels/Level1.tscn")	
+	##if (coins == 3):
+	##	get_tree().change_scene("res://Levels/Level1.tscn")	
 	
 func _on_FallZone_body_entered(body):
 	get_tree().change_scene("res://Levels/Level1.tscn")
-	find_node()
 
 func coin_count():
 	coins += 1
 	print("I now have this many coins: ", coins)
+	huds[0].update_coin(coins)
+
 
