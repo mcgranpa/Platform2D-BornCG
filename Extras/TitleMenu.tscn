@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/coin/gold_1.png" type="Texture" id=8]
 [ext_resource path="res://Assets/UI/arrow-UP.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/StartButton.gd" type="Script" id=10]
+[ext_resource path="res://Assets/music/Swinging Pants.ogg" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -256,4 +257,9 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -25.0
+autoplay = true
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_StartButton_pressed"]

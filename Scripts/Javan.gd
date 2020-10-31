@@ -8,12 +8,24 @@ var kills = 0
 var coin_lives = 5
 var kill_lives = 5
 var safe_timer = 3
-var win_count = 3
+var win_count = 500
 
 const SPEED = 210
 const GRAVITY = 35
 const JUMPFORCE = -1100
 const MAXJUMPS = 2
+
+var jump_sound = "res://Assets/sounds/jump1.ogg"
+var Jump_Sound
+var Jump_Sound_db = -12
+
+var coin_sound = "res://Assets/sounds/powerUp2.ogg"
+var Coin_Sound
+var Coin_Sound_db = 10
+
+var hurt_sound = "res://Assets/sounds/jingles_PIZZA07.ogg"
+var Hurt_Sound
+var Hurt_Sound_db = 1
 
 onready var huds = get_tree().get_nodes_in_group("HUD")
 
@@ -21,6 +33,12 @@ func _ready():
 	huds[0].update_coin(coins)
 	huds[0].update_lives(lives)
 	huds[0].update_kills(kills)
+	Jump_Sound = load(jump_sound)
+	Jump_Sound.set_loop(false)
+	Coin_Sound = load(coin_sound)
+	Coin_Sound.set_loop(false)
+	Hurt_Sound = load(hurt_sound)
+	Hurt_Sound.set_loop(false)
 
 func _physics_process(delta):
 	if Input.is_action_pressed("right"):
@@ -49,6 +67,9 @@ func _physics_process(delta):
 		else:
 			canDoubleJump = false
 		velocity.y = JUMPFORCE
+		$SoundPlay.stream = Jump_Sound
+		$SoundPlay.volume_db = Jump_Sound_db
+		$SoundPlay.play()
 	
 	## print (canDoubleJump)
 	## using "velocity =" prevents velocity y from continuing to 
@@ -68,6 +89,9 @@ func _on_FallZone_body_entered(body):
 
 func coin_count():
 	coins += 1
+	$SoundPlay.stream = Coin_Sound
+	$SoundPlay.volume_db = Coin_Sound_db
+	$SoundPlay.play()
 	##print("I now have this many coins: ", coins)
 	huds[0].update_coin(coins)
 	if (coins % coin_lives) == 0:
@@ -89,6 +113,9 @@ func bounce():
 func ouch(enemyposx):
 	var temp
 	lives -= 1
+	$SoundPlay.stream = Hurt_Sound
+	$SoundPlay.volume_db = Hurt_Sound_db
+	$SoundPlay.play()
 	huds[0].update_lives(lives)	
 	set_modulate(Color(1,0.3,0.3,0.4))
 	velocity.y = JUMPFORCE * 0.3
@@ -99,7 +126,7 @@ func ouch(enemyposx):
 	Input.action_release("left")
 	Input.action_release("right")
 	Input.action_release("jump")
-	$Timer.start()	
+	##$Timer.start()	
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Extras/YouLose.tscn")

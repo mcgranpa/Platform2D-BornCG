@@ -7,11 +7,16 @@ export var detects_cliff = true
 var speed = 50
 const GRAVITY = 20
 
+var squash_sound = "res://Assets/sounds/pepSound2.ogg"
+var Squash_Sound
+var Squash_Sound_db = 10
 
 func _ready():
 	if detects_cliff:
 		set_modulate(Color(1.2,0.5,1))
 	flip()
+	Squash_Sound = load(squash_sound)
+	Squash_Sound.set_loop(false)
 	
 func _physics_process(delta):
 	
@@ -43,6 +48,9 @@ func flip():
 
 func _on_top_checker_body_entered(body):
 	$AnimatedSprite.play("squash")
+	$SoundPlay.stream = Squash_Sound
+	$SoundPlay.volume_db = Squash_Sound_db
+	$SoundPlay.play()
 	speed = 0
 	set_collision_layer_bit(4, false)
 	set_collision_mask_bit(0, false)
@@ -53,7 +61,7 @@ func _on_top_checker_body_entered(body):
 	$Timer.start()
 	body.bounce()
 	body.kill_count()
-		
+			
 func _on_side_checker_body_entered(body):
 	##print("collide with player")
 	body.ouch(position.x)
