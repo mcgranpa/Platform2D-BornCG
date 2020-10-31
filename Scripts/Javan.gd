@@ -8,6 +8,7 @@ var kills = 0
 var coin_lives = 5
 var kill_lives = 5
 var safe_timer = 3
+var win_count = 3
 
 const SPEED = 210
 const GRAVITY = 35
@@ -63,7 +64,7 @@ func _physics_process(delta):
 	##	get_tree().change_scene("res://Levels/Level1.tscn")	
 	
 func _on_FallZone_body_entered(body):
-	get_tree().change_scene("res://Levels/Level1.tscn")
+	get_tree().change_scene("res://Extras/YouLose.tscn")
 
 func coin_count():
 	coins += 1
@@ -72,6 +73,8 @@ func coin_count():
 	if (coins % coin_lives) == 0:
 		lives += 1
 		huds[0].update_lives(lives)
+	if (coins == win_count):
+		get_tree().change_scene("res://Extras/YouWin.tscn")
 		
 func kill_count():
 	kills += 1
@@ -99,4 +102,4 @@ func ouch(enemyposx):
 	$Timer.start()	
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://Levels/Level1.tscn")
+	get_tree().change_scene("res://Extras/YouLose.tscn")

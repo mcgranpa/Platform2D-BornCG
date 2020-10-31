@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Extras/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/fonts/KiriFont.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="YouLose" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.494118, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 40.2353
+margin_top = 77.3665
+margin_right = 965.235
+margin_bottom = 222.367
+rect_scale = Vector2( 1, 0.974305 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.282353, 0.682353, 0.270588, 1 )
+text = "  You Lose"
+
+[node name="MainMenuButton" type="Button" parent="."]
+margin_left = 358.329
+margin_top = 254.175
+margin_right = 695.329
+margin_bottom = 338.175
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_MainMenuButton_pressed"]
