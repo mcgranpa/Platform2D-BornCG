@@ -3,7 +3,11 @@ extends KinematicBody2D
 var velocity = Vector2(0, 0)
 var canDoubleJump = false
 var coins = 0
-var lives = 5
+var lives = 3
+var kills = 0
+var coin_lives = 5
+var kill_lives = 5
+var safe_timer = 3
 
 const SPEED = 210
 const GRAVITY = 35
@@ -11,6 +15,11 @@ const JUMPFORCE = -1100
 const MAXJUMPS = 2
 
 onready var huds = get_tree().get_nodes_in_group("HUD")
+
+func _ready():
+	huds[0].update_coin(coins)
+	huds[0].update_lives(lives)
+	huds[0].update_kills(kills)
 
 func _physics_process(delta):
 	if Input.is_action_pressed("right"):
@@ -58,14 +67,26 @@ func _on_FallZone_body_entered(body):
 
 func coin_count():
 	coins += 1
-	print("I now have this many coins: ", coins)
+	##print("I now have this many coins: ", coins)
 	huds[0].update_coin(coins)
-
+	if (coins % coin_lives) == 0:
+		lives += 1
+		huds[0].update_lives(lives)
+		
+func kill_count():
+	kills += 1
+	huds[0].update_kills(kills)
+	if (kills % kill_lives) == 0:
+		lives += 1
+		huds[0].update_lives(lives)		
+		
 func bounce():
 	velocity.y = JUMPFORCE * 0.3
 
 func ouch(enemyposx):
 	var temp
+	lives -= 1
+	huds[0].update_lives(lives)	
 	set_modulate(Color(1,0.3,0.3,0.4))
 	velocity.y = JUMPFORCE * 0.3
 	if position.x < enemyposx:

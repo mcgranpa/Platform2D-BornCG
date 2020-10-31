@@ -1,0 +1,259 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/fonts/KiriFont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/UI/grey_button04.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/grey_button13.png" type="Texture" id=5]
+[ext_resource path="res://Assets/player/platformChar_idle.png" type="Texture" id=6]
+[ext_resource path="res://Assets/enemies/slimeBlue_blue.png" type="Texture" id=7]
+[ext_resource path="res://Assets/coin/gold_1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/arrow-UP.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/StartButton.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.4, 0.137255, 0.137255, 0.454902 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 22
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="TitleMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.25098, 0, 0.694118, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 154.528
+margin_top = 86.8909
+margin_right = 869.528
+margin_bottom = 231.891
+rect_scale = Vector2( 1, 0.974305 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.282353, 0.682353, 0.270588, 1 )
+text = "    Born CG
+Platform Game"
+
+[node name="LeftPanel" type="Panel" parent="."]
+margin_left = 38.3463
+margin_top = 349.839
+margin_right = 442.346
+margin_bottom = 569.839
+rect_scale = Vector2( 0.892115, 0.960676 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LeftPanel"]
+margin_left = 24.6884
+margin_top = 6.25266
+margin_right = 118.688
+margin_bottom = 36.2527
+custom_fonts/font = SubResource( 3 )
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpaceButton" type="TextureRect" parent="LeftPanel"]
+margin_left = 23.1921
+margin_top = 154.927
+margin_right = 120.192
+margin_bottom = 186.927
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Space" type="Label" parent="LeftPanel/SpaceButton"]
+margin_left = 12.9766
+margin_top = 3.15791
+margin_right = 96.9766
+margin_bottom = 30.1579
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Space"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jump" type="Label" parent="LeftPanel"]
+margin_left = 131.671
+margin_top = 157.706
+margin_right = 213.671
+margin_bottom = 186.706
+custom_fonts/font = SubResource( 5 )
+text = "= JUMP"
+
+[node name="LeftArrowButton" type="TextureRect" parent="LeftPanel"]
+margin_left = 30.0
+margin_top = 80.0
+margin_right = 90.0
+margin_bottom = 122.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LeftArrow" type="TextureRect" parent="LeftPanel/LeftArrowButton"]
+margin_left = 13.4737
+margin_top = 40.429
+margin_right = 53.4737
+margin_bottom = 63.429
+rect_rotation = -90.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightArrowButton" type="TextureRect" parent="LeftPanel"]
+margin_left = 102.569
+margin_top = 80.0
+margin_right = 162.569
+margin_bottom = 122.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RightArrow" type="TextureRect" parent="LeftPanel/RightArrowButton"]
+margin_left = 40.5685
+margin_top = 2.27429
+margin_right = 80.5685
+margin_bottom = 25.2743
+rect_rotation = 90.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move" type="Label" parent="."]
+margin_left = 202.598
+margin_top = 433.368
+margin_right = 284.598
+margin_bottom = 462.368
+custom_fonts/font = SubResource( 5 )
+text = "= Move"
+
+[node name="RightPanel" type="Panel" parent="."]
+margin_left = 584.156
+margin_top = 348.425
+margin_right = 988.156
+margin_bottom = 568.425
+rect_scale = Vector2( 0.892115, 0.960676 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="TextureRect" parent="RightPanel"]
+margin_left = 24.8851
+margin_top = 118.252
+margin_right = 121.885
+margin_bottom = 192.252
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerText" type="Label" parent="RightPanel/Player"]
+margin_left = 93.869
+margin_top = 28.1632
+margin_right = 175.869
+margin_bottom = 57.1632
+custom_fonts/font = SubResource( 5 )
+text = "= You"
+
+[node name="Enemy" type="TextureRect" parent="RightPanel"]
+margin_left = 210.36
+margin_top = 139.131
+margin_right = 288.36
+margin_bottom = 187.131
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemtyText" type="Label" parent="RightPanel/Enemy"]
+margin_left = 91.0444
+margin_top = 11.7696
+margin_right = 173.044
+margin_bottom = 40.7696
+custom_fonts/font = SubResource( 5 )
+text = "= Enemy"
+
+[node name="Coins" type="TextureRect" parent="RightPanel"]
+margin_left = 30.0599
+margin_top = 62.0149
+margin_right = 108.06
+margin_bottom = 110.015
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinText" type="Label" parent="RightPanel/Coins"]
+margin_left = 91.0444
+margin_top = 11.7696
+margin_right = 173.044
+margin_bottom = 40.7696
+custom_fonts/font = SubResource( 5 )
+text = "= Coins"
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 425.0
+margin_top = 251.0
+margin_right = 581.0
+margin_bottom = 335.0
+custom_fonts/font = SubResource( 6 )
+text = "Start"
+flat = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_StartButton_pressed"]

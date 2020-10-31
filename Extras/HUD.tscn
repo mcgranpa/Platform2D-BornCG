@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Assets/HUD/coin_gold.png" type="Texture" id=2]
+[ext_resource path="res://Assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/player/platformChar_happy.png" type="Texture" id=4]
+[ext_resource path="res://Assets/enemies/slimeBlue_squashed.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="CanvasLayer" groups=[
+"HUD",
+]]
+script = ExtResource( 1 )
+
+[node name="CoinPanel" type="Panel" parent="."]
+margin_left = 8.0
+margin_top = -8.0
+margin_right = 234.0
+margin_bottom = 56.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="CoinPanel"]
+margin_left = 72.3829
+margin_top = 19.2996
+margin_right = 156.383
+margin_bottom = 60.2996
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinPicture" type="TextureRect" parent="CoinPanel"]
+margin_left = 7.9836
+margin_top = 18.8541
+margin_right = 68.9836
+margin_bottom = 79.8541
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Label" parent="CoinPanel"]
+margin_left = 27.242
+margin_top = 24.0
+margin_right = 67.242
+margin_bottom = 110.0
+rect_scale = Vector2( 1.32317, 0.436729 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "x
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 34.0
+margin_right = 277.0
+margin_bottom = 110.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Players" type="Label" parent="LivesPanel"]
+margin_left = 72.383
+margin_top = 9.22023
+margin_right = 156.383
+margin_bottom = 48.2202
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerPicture" type="TextureRect" parent="LivesPanel"]
+margin_left = 0.424061
+margin_top = 11.2946
+margin_right = 61.4241
+margin_bottom = 72.2946
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Label" parent="LivesPanel"]
+margin_left = 27.1001
+margin_top = 1.67613
+margin_right = 67.1
+margin_bottom = 160.676
+rect_scale = Vector2( 1.32317, 0.436729 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "x
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KillsPanel" type="Panel" parent="."]
+margin_left = 4.96033
+margin_top = 79.3572
+margin_right = 271.96
+margin_bottom = 155.357
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kills" type="Label" parent="KillsPanel"]
+margin_left = 79.9424
+margin_top = -2.59921
+margin_right = 163.942
+margin_bottom = 36.4008
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KillPicture" type="TextureRect" parent="KillsPanel"]
+margin_left = 4.20385
+margin_top = -11.384
+margin_right = 65.2038
+margin_bottom = 49.616
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Label" parent="KillsPanel"]
+margin_left = 31.0
+margin_top = -15.0
+margin_right = 72.0
+margin_bottom = 144.0
+rect_scale = Vector2( 1.32317, 0.436729 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.8, 0.113725, 1 )
+text = "x
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

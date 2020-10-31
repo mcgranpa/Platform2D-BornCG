@@ -20,9 +20,9 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "crouch",
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 2 ) ],
@@ -30,8 +30,8 @@ animations = [ {
 "name": "climb",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "walk",
+"name": "crouch",
 "speed": 5.0
 } ]

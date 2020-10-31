@@ -52,12 +52,10 @@ func _on_top_checker_body_entered(body):
 	$side_checker.set_collision_mask_bit(0, false)
 	$Timer.start()
 	body.bounce()
-	
-	
-	
-	
+	body.kill_count()
+		
 func _on_side_checker_body_entered(body):
-	print("collide with player")
+	##print("collide with player")
 	body.ouch(position.x)
 	
 
