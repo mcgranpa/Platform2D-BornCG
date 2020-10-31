@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/EnemyAnimate.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=2]
@@ -6,8 +6,14 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.625, 14.375 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9.94522, 2.31891 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25.9969, 10.3495 )
+
 [node name="enemy" type="KinematicBody2D"]
-position = Vector2( 0.992126, 1.19055 )
+position = Vector2( 0.36145, 0.770103 )
 collision_layer = 16
 collision_mask = 39
 script = ExtResource( 2 )
@@ -15,10 +21,10 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0.5, 2.625 )
 shape = SubResource( 1 )
 
@@ -30,3 +36,29 @@ collision_mask = 2
 __meta__ = {
 "_editor_description_": "This will be used to detect if the enemy is about to drop off a platform "
 }
+
+[node name="top_checker" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_checker"]
+position = Vector2( -0.017704, -14.1796 )
+scale = Vector2( 1.57441, -0.996149 )
+shape = SubResource( 2 )
+
+[node name="side_checker" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side_checker"]
+position = Vector2( -0.111366, 6.34765 )
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+[connection signal="body_entered" from="top_checker" to="." method="_on_top_checker_body_entered"]
+[connection signal="body_entered" from="side_checker" to="." method="_on_side_checker_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

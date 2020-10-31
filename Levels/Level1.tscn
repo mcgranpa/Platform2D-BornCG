@@ -37,7 +37,7 @@ __meta__ = {
 [node name="OneWayTileMap" parent="." instance=ExtResource( 4 )]
 
 [node name="Javan" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1172.35, -704.012 )
+position = Vector2( 844.772, -694.563 )
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2( 3264, -256 )
@@ -122,6 +122,10 @@ __meta__ = {
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="enemy" parent="enemies" instance=ExtResource( 10 )]
-position = Vector2( 1175.87, -918.552 )
+[node name="enemy01" parent="enemies" instance=ExtResource( 10 )]
+position = Vector2( 555.357, -912.252 )
+
+[node name="enemy02" parent="enemies" instance=ExtResource( 10 )]
+position = Vector2( 1087.67, -896.503 )
+detects_cliff = false
 [connection signal="body_entered" from="FallZone" to="Javan" method="_on_FallZone_body_entered"]

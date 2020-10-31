@@ -4,11 +4,13 @@ var velocity = Vector2()
 export var direction = -1
 export var detects_cliff = true
 
-const SPEED = 50
+var speed = 50
 const GRAVITY = 20
 
 
 func _ready():
+	if detects_cliff:
+		set_modulate(Color(1.2,0.5,1))
 	flip()
 	
 func _physics_process(delta):
@@ -28,7 +30,7 @@ func _physics_process(delta):
 	
 	velocity.y += GRAVITY
 	
-	velocity.x = SPEED * direction 
+	velocity.x = speed * direction 
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 func flip():
@@ -37,3 +39,29 @@ func flip():
 	else:
 		$AnimatedSprite.flip_h = false
 	$floor_checker.position.x = $CollisionShape2D.shape.get_extents().x * direction
+
+
+func _on_top_checker_body_entered(body):
+	$AnimatedSprite.play("squash")
+	speed = 0
+	set_collision_layer_bit(4, false)
+	set_collision_mask_bit(0, false)
+	$top_checker.set_collision_layer_bit(4, false)
+	$top_checker.set_collision_mask_bit(0, false)
+	$side_checker.set_collision_layer_bit(4, false)
+	$side_checker.set_collision_mask_bit(0, false)
+	$Timer.start()
+	body.bounce()
+	
+	
+	
+	
+func _on_side_checker_body_entered(body):
+	print("collide with player")
+	body.ouch(position.x)
+	
+
+
+func _on_Timer_timeout():
+	queue_free()
+	

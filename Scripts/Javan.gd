@@ -3,6 +3,7 @@ extends KinematicBody2D
 var velocity = Vector2(0, 0)
 var canDoubleJump = false
 var coins = 0
+var lives = 5
 
 const SPEED = 210
 const GRAVITY = 35
@@ -60,4 +61,21 @@ func coin_count():
 	print("I now have this many coins: ", coins)
 	huds[0].update_coin(coins)
 
+func bounce():
+	velocity.y = JUMPFORCE * 0.3
 
+func ouch(enemyposx):
+	var temp
+	set_modulate(Color(1,0.3,0.3,0.4))
+	velocity.y = JUMPFORCE * 0.3
+	if position.x < enemyposx:
+		velocity.x = SPEED * -1 * 2
+	elif position.x > enemyposx:
+		velocity.x = SPEED * 2
+	Input.action_release("left")
+	Input.action_release("right")
+	Input.action_release("jump")
+	$Timer.start()	
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Levels/Level1.tscn")
